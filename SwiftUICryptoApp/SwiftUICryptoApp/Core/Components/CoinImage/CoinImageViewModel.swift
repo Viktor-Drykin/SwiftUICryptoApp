@@ -9,12 +9,12 @@ import SwiftUI
 import Combine
 
 class CoinImageViewModel: ObservableObject {
+    
     @Published var image: UIImage? = nil
     @Published var isLoading = false
 
     private let coin: CoinModel
     private let dataService: CoinImageService
-
     private var cancellables = Set<AnyCancellable>()
 
     init(coin: CoinModel) {

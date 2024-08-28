@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
 
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
+    @Published var searchText: String = ""
 
     // just for study SwiftUI we don't pass services
     private let dataService = CoinDataService()
