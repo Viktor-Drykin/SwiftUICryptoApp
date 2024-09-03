@@ -38,6 +38,8 @@
 		C0EF5A472C87214E00EBEFF5 /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A462C87214E00EBEFF5 /* PortfolioView.swift */; };
 		C0EF5A492C87234300EBEFF5 /* XmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A482C87234300EBEFF5 /* XmarkButton.swift */; };
 		C0EF5A4B2C8725F000EBEFF5 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A4A2C8725F000EBEFF5 /* CoinLogoView.swift */; };
+		C0EF5A4D2C876BCE00EBEFF5 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A4C2C876BCE00EBEFF5 /* PortfolioDataService.swift */; };
+		C0EF5A502C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A4E2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		C0EF5A462C87214E00EBEFF5 /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
 		C0EF5A482C87234300EBEFF5 /* XmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmarkButton.swift; sourceTree = "<group>"; };
 		C0EF5A4A2C8725F000EBEFF5 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
+		C0EF5A4C2C876BCE00EBEFF5 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		C0EF5A4F2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 				C09BD33D2C7C8DF600638656 /* CoinModel.swift */,
 				C01C9A2C2C84CCD50081C4CC /* StatisticModel.swift */,
 				C01C9A322C84D39D0081C4CC /* MarketDataModel.swift */,
+				C0EF5A4E2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				C0EF4B272C7CD7560059CA83 /* CoinDataService.swift */,
 				C09BC1A12C7E1CA80045C509 /* CoinImageService.swift */,
 				C01C9A342C84D6B60081C4CC /* MarketDataService.swift */,
+				C0EF5A4C2C876BCE00EBEFF5 /* PortfolioDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -312,6 +318,7 @@
 				C0EF4B282C7CD7560059CA83 /* CoinDataService.swift in Sources */,
 				C0E372B52C737557006461ED /* String.swift in Sources */,
 				C0EF4B2B2C7CE1900059CA83 /* NetworkingManager.swift in Sources */,
+				C0EF5A4D2C876BCE00EBEFF5 /* PortfolioDataService.swift in Sources */,
 				C0E372B62C737557006461ED /* UIApplication.swift in Sources */,
 				C0EF5A472C87214E00EBEFF5 /* PortfolioView.swift in Sources */,
 				C09BC1A72C7E24130045C509 /* LocalFileManager.swift in Sources */,
@@ -326,6 +333,7 @@
 				C09BD3422C7CA97B00638656 /* HomeViewModel.swift in Sources */,
 				C09BC1A02C7E1BA30045C509 /* CoinImageView.swift in Sources */,
 				C01C9A312C84D0470081C4CC /* HomeStatsView.swift in Sources */,
+				C0EF5A502C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld in Sources */,
 				C0E372B72C737557006461ED /* PreviewProvider.swift in Sources */,
 				C0EF5A4B2C8725F000EBEFF5 /* CoinLogoView.swift in Sources */,
 				C0E372B32C737557006461ED /* Double.swift in Sources */,
@@ -538,6 +546,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C0EF5A4E2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C0EF5A4F2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodel */,
+			);
+			currentVersion = C0EF5A4F2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodel */;
+			path = PortfolioContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C0E372902C737326006461ED /* Project object */;
 }
