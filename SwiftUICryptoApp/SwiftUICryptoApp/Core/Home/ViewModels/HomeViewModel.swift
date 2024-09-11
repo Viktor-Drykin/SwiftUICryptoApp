@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
 
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
+    @Published var isLoading = false
     @Published var searchText: String = ""
 
     // just for study SwiftUI we don't pass services
@@ -36,31 +37,33 @@ class HomeViewModel: ObservableObject {
             }
             .store(in: &cancellables)
 
-        marketDataService.$marketData
-            .map(mapGlobalMarketData)
-            .sink { [weak self] stats in
-                self?.statistics = stats
+        $allCoins
+            .combineLatest(portfolioDataService.$savedEntities)
+            .map(mapAllCoinsToPortfolioCoins)
+            .sink { [weak self] coins in
+                self?.portfolioCoins = coins
             }
             .store(in: &cancellables)
 
-        $allCoins
-            .combineLatest(portfolioDataService.$savedEntities)
-            .map { coinModels, portfolioEntities in
-                coinModels.compactMap { coinModel -> CoinModel? in
-                    guard let entity = portfolioEntities.first(where: { $0.coinID == coinModel.id }) else {
-                        return nil
-                    }
-                    return coinModel.updateHoldings(amount: entity.amount)
-                }
-            }
-            .sink { [weak self] coins in
-                self?.portfolioCoins = coins
+        marketDataService.$marketData
+            .combineLatest($portfolioCoins)
+            .map(mapGlobalMarketData)
+            .sink { [weak self] stats in
+                self?.statistics = stats
+                self?.isLoading = false
             }
             .store(in: &cancellables)
     }
 
     func updatePortfolio(coin: CoinModel, amount: Double) {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
+    }
+
+    func reloadData() {
+        isLoading = true
+        coinDataService.getCoins()
+        marketDataService.getData()
+        HapticManager.notification(type: .success)
     }
 
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
@@ -74,12 +77,39 @@ class HomeViewModel: ObservableObject {
         }
     }
 
-    private func mapGlobalMarketData(marketDataModel: MarketDataModel?) -> [StatisticModel] {
+    private func mapAllCoinsToPortfolioCoins(allCoins: [CoinModel], portfolioCoins: [PortfolioEntity]) -> [CoinModel] {
+        allCoins.compactMap { coinModel -> CoinModel? in
+            guard let entity = portfolioCoins.first(where: { $0.coinID == coinModel.id }) else {
+                return nil
+            }
+            return coinModel.updateHoldings(amount: entity.amount)
+        }
+    }
+
+    private func mapGlobalMarketData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
         guard let data = marketDataModel else { return [] }
         let marketCap = StatisticModel(title: "Market Cap", value: data.marketCap, percentageChange: data.marketCapChangePercentage24HUsd)
         let volume = StatisticModel(title: "24h Volume", value: data.volume)
         let btcDominance = StatisticModel(title: "BTC Dominance", value: data.btcDominance)
-        let portfolio = StatisticModel(title: "Portfolio value", value: "$0.00", percentageChange: 0)
+
+        let portfolioValue = portfolioCoins
+            .map { $0.currentHoldingsValue }
+            .reduce(0, + )
+
+        let previousValue = portfolioCoins
+            .map { coin -> Double in
+                let currentValue = coin.currentHoldingsValue
+                let percentChange = (coin.priceChangePercentage24H ?? 0) / 100
+                let previousValue = currentValue / (1 + percentChange)
+                return previousValue
+            }
+            .reduce(0, + )
+
+        let percantageChange = ((portfolioValue - previousValue) / previousValue) * 100
+
+        let portfolio = StatisticModel(title: "Portfolio value",
+                                       value: portfolioValue.asCurrencyWith2Decimals(),
+                                       percentageChange: percantageChange)
 
         return [marketCap, volume, btcDominance, portfolio]
     }

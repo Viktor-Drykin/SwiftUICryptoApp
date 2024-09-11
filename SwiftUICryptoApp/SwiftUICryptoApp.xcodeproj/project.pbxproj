@@ -40,6 +40,7 @@
 		C0EF5A4B2C8725F000EBEFF5 /* CoinLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A4A2C8725F000EBEFF5 /* CoinLogoView.swift */; };
 		C0EF5A4D2C876BCE00EBEFF5 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A4C2C876BCE00EBEFF5 /* PortfolioDataService.swift */; };
 		C0EF5A502C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0EF5A4E2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodeld */; };
+		C0EFF5EB2C8F4F8A00E41C3E /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EFF5EA2C8F4F8A00E41C3E /* HapticManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		C0EF5A4A2C8725F000EBEFF5 /* CoinLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinLogoView.swift; sourceTree = "<group>"; };
 		C0EF5A4C2C876BCE00EBEFF5 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
 		C0EF5A4F2C876C0400EBEFF5 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
+		C0EFF5EA2C8F4F8A00E41C3E /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			children = (
 				C0EF4B2A2C7CE1900059CA83 /* NetworkingManager.swift */,
 				C09BC1A62C7E24130045C509 /* LocalFileManager.swift */,
+				C0EFF5EA2C8F4F8A00E41C3E /* HapticManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			files = (
 				C0E372BD2C737E8B006461ED /* HomeView.swift in Sources */,
 				C09BD3402C7C963400638656 /* CoinRowView.swift in Sources */,
+				C0EFF5EB2C8F4F8A00E41C3E /* HapticManager.swift in Sources */,
 				C0E372C32C748AFA006461ED /* CircleButtonAnimationView.swift in Sources */,
 				C0EF4B282C7CD7560059CA83 /* CoinDataService.swift in Sources */,
 				C0E372B52C737557006461ED /* String.swift in Sources */,

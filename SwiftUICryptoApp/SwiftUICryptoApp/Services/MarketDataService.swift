@@ -19,7 +19,7 @@ class MarketDataService {
         getData()
     }
 
-    private func getData() {
+    func getData() {
         guard let url = URL(string: marketsURLString) else { return }
 
         marketDataSubscription = NetworkingManager.download(url: url)
