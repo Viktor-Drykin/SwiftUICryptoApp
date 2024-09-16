@@ -102,6 +102,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C05CADA12C98AE1300103121 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		C06EBACE2C91FFBF00B3FE6E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +213,7 @@
 		C0E372B82C737E58006461ED /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C05CADA12C98AE1300103121 /* Settings */,
 				C0E372BE2C737F74006461ED /* Components */,
 				C0E372B92C737E6B006461ED /* Home */,
 				C06EBACE2C91FFBF00B3FE6E /* Detail */,
