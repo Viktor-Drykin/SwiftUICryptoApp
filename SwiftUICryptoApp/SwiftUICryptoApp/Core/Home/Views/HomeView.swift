@@ -30,25 +30,9 @@ struct HomeView: View {
             VStack {
                 homeHeader
                 HomeStatsView(showPortfolio: $showPortfolio)
-
                 SearchBarView(searchText: $vm.searchText)
-
                 columnTitles
-
-                if !showPortfolio {
-                    allCoinsList
-                        .transition(.move(edge: .leading))
-                }
-                if showPortfolio {
-                    ZStack(alignment: .top) {
-                        if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
-                            portfolioEmptyText
-                        } else {
-                            portfolioCoinsList
-                        }
-                    }
-                    .transition(.move(edge: .trailing))
-                }
+                coinSectionUsingTransitions
                 Spacer(minLength: 0)
             }
             .sheet(isPresented: $showSettingsView) {
@@ -106,6 +90,7 @@ extension HomeView {
                     .onTapGesture {
                         segue(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(.plain)
@@ -119,9 +104,29 @@ extension HomeView {
                     .onTapGesture {
                         segue(coin: coin)
                     }
+                    .listRowBackground(Color.theme.background)
             }
         }
         .listStyle(.plain)
+    }
+
+    private var coinSectionUsingTransitions: some View {
+        ZStack(alignment: .top) {
+            if !showPortfolio {
+                allCoinsList
+                    .transition(.move(edge: .leading))
+            }
+            if showPortfolio {
+                ZStack(alignment: .top) {
+                    if vm.portfolioCoins.isEmpty && vm.searchText.isEmpty {
+                        portfolioEmptyText
+                    } else {
+                        portfolioCoinsList
+                    }
+                }
+                .transition(.move(edge: .trailing))
+            }
+        }
     }
 
     private var portfolioEmptyText: some View {
