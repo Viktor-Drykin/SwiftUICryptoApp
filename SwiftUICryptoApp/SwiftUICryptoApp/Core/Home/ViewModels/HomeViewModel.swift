@@ -122,7 +122,7 @@ class HomeViewModel: ObservableObject {
             }
             .reduce(0, + )
 
-        let percantageChange = ((portfolioValue - previousValue) / previousValue) * 100
+        let percantageChange = (portfolioValue - previousValue) / previousValue
 
         let portfolio = StatisticModel(title: "Portfolio value",
                                        value: portfolioValue.asCurrencyWith2Decimals(),
